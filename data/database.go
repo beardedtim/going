@@ -2,8 +2,10 @@ package data
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/go-pg/pg/v10"
+	"mck-p.com/env"
 	mcLog "mck-p.com/log"
 )
 
@@ -23,10 +25,14 @@ func Init() {
 	log.Info("Creating new database connection")
 
 	db = pg.Connect(&pg.Options{
-		User:     "username",
-		Addr:     "0.0.0.0:9999",
-		Password: "password",
-		Database: "mckp",
+		User: env.GetEnv("DB_USERNAME"),
+		Addr: fmt.Sprintf(
+			"%s:%s",
+			env.GetEnv("DB_HOST"),
+			env.GetEnv("DB_PORT"),
+		),
+		Password: env.GetEnv("DB_PASSWORD"),
+		Database: env.GetEnv("DB_NAME"),
 	})
 
 	if err != nil {

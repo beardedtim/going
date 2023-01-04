@@ -15,17 +15,19 @@ fmt:
 #
 # Starts Backing Services inside of Docker
 #
-start-backing-services:
-	docker-compose up -d
+start-backing-services-dev:
+	docker-compose -f docker-compose.dev.yaml up -d
 
-stop-backing-services:
-	docker-compose down
+stop-backing-services-dev:
+	docker-compose -f docker-compose.dev.yaml down
 #
 # Start the system in development mode
 # 
-dev-run: start-backing-services
+dev-run: start-backing-services-dev
 	go run .
 
+run:
+	docker-compose up
 #
 # Creates a migeration file to be used by goose
 #

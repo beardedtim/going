@@ -7,4 +7,18 @@ services:
     environment:
       POSTGRES_USER: username
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: mckp
+      POSTGRES_DB:  mckp
+    
+  app:
+    build:
+      context: .
+    
+    ports:
+      - "8080:8080"
+    
+    environment:
+      DB_USER: username
+      DB_PASSWORD: password
+      DB_NAME: mckp
+      DB_HOST: database
+      DB_PORT: 5432
