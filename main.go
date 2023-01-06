@@ -4,9 +4,9 @@ import (
 	"os"
 	"os/signal"
 
-	database "mkc-p/modi/data"
-	ckp "mkc-p/modi/http"
-	mclog "mkc-p/modi/log"
+	database "mck-p/modi/data"
+	ckp "mck-p/modi/http"
+	mclog "mck-p/modi/log"
 )
 
 func main() {

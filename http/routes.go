@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	database "mkc-p/modi/data"
+	database "mck-p/modi/data"
 
 	"github.com/gin-gonic/gin"
 )

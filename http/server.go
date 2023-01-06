@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"net/http"
 
-	env "mkc-p/modi/env"
-	mclog "mkc-p/modi/log"
+	env "mck-p/modi/env"
+	mclog "mck-p/modi/log"
+	views "mck-p/modi/view"
 
 	"github.com/gin-gonic/gin"
 )
@@ -36,19 +37,40 @@ func (server Server) Stop() error {
 	return server.Raw.Close()
 }
 
-func CreateServer() Server {
-	log := mclog.CreateLogger("SERVER")
-	handler := gin.Default()
+func setupHandler(handler *gin.Engine) *gin.Engine {
+	/*
+		Set up Global Headers
+	*/
+	handler.Use(SetGlobalHeaders())
+
+	/*
+		Set up View Layer Configuration
+	*/
+	handler.HTMLRender = views.LoadTemplates("view")
+
+	/*
+		Handle Static Assets
+
+		TODO: Replace Static Assets with S3/CDN
+	*/
+	handler.Static("/assets", "./artifacts/assets")
+
+	/*
+		Assign HTTP Handlers
+	*/
+	handler.GET("/", views.Home)
 
 	handler.GET("/healthcheck", Healthcheck)
+
 	handler.GET("/authors", FindAllAuthors)
 	handler.POST("/authors", CreateAuthor)
 
-	handler.GET("/ping", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "pong",
-		})
-	})
+	return handler
+}
+
+func CreateServer() Server {
+	log := mclog.CreateLogger("SERVER")
+	handler := setupHandler(gin.Default())
 
 	rawServer := &http.Server{
 		Addr:    fmt.Sprintf(":%s", env.GetEnv("PORT", "8080")),

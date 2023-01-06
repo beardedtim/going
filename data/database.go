@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"mkc-p/modi/env"
-	mcLog "mkc-p/modi/log"
+	"mck-p/modi/env"
+	mcLog "mck-p/modi/log"
 
 	"github.com/go-pg/pg/v10"
 )
