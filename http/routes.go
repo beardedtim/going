@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"net/http"
 
+	database "mkc-p/modi/data"
+
 	"github.com/gin-gonic/gin"
-	database "mck-p.com/data"
 )
 
 func FindAllAuthors(c *gin.Context) {

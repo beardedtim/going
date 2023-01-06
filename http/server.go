@@ -4,9 +4,10 @@ import (
 	"fmt"
 	"net/http"
 
+	env "mkc-p/modi/env"
+	mclog "mkc-p/modi/log"
+
 	"github.com/gin-gonic/gin"
-	env "mck-p.com/env"
-	mclog "mck-p.com/log"
 )
 
 type IServer interface {

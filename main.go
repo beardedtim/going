@@ -4,9 +4,9 @@ import (
 	"os"
 	"os/signal"
 
-	database "mck-p.com/data"
-	ckp "mck-p.com/http"
-	mclog "mck-p.com/log"
+	database "mkc-p/modi/data"
+	ckp "mkc-p/modi/http"
+	mclog "mkc-p/modi/log"
 )
 
 func main() {
@@ -25,14 +25,17 @@ func main() {
 
 	go func() {
 		<-quit
+
 		if err := server.Stop(); err != nil {
 			panic(err)
 		}
+
 		log.Info("Disconnected Server")
 
 		if err := database.Disconnect(); err != nil {
 			panic(err)
 		}
+
 		log.Info("Disconnected DB")
 
 		os.Exit(0)

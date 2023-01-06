@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	logger "mck-p.com/log"
+	logger "mkc-p/modi/log"
 )
 
 func GetEnvVar(key string, args ...any) (string, error) {

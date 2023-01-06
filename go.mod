@@ -1,18 +1,14 @@
-module mkc-p.com
+module mkc-p/modi
 
 go 1.19
 
-require mck-p.com/http v0.0.0
-
 require (
-	mck-p.com/data v0.0.0
-	mck-p.com/log v0.0.0
+	github.com/gin-gonic/gin v1.8.2
+	github.com/go-pg/pg/v10 v10.11.0
 )
 
 require (
 	github.com/gin-contrib/sse v0.1.0 // indirect
-	github.com/gin-gonic/gin v1.8.2 // indirect
-	github.com/go-pg/pg/v10 v10.10.7 // indirect
 	github.com/go-pg/zerochecker v0.2.0 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
@@ -37,14 +33,5 @@ require (
 	golang.org/x/text v0.5.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	mck-p.com/env v0.0.0 // indirect
-	mellium.im/sasl v0.2.1 // indirect
+	mellium.im/sasl v0.3.1 // indirect
 )
-
-replace mck-p.com/http => ./http
-
-replace mck-p.com/data => ./data
-
-replace mck-p.com/log => ./log
-
-replace mck-p.com/env => ./env

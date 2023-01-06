@@ -4,9 +4,10 @@ import (
 	"context"
 	"fmt"
 
+	"mkc-p/modi/env"
+	mcLog "mkc-p/modi/log"
+
 	"github.com/go-pg/pg/v10"
-	"mck-p.com/env"
-	mcLog "mck-p.com/log"
 )
 
 var db *pg.DB
