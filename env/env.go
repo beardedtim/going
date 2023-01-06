@@ -15,7 +15,7 @@ func GetEnvVar(key string, args ...any) (string, error) {
 		return value, nil
 	}
 
-	if args[0] != nil {
+	if len(args) != 0 {
 		var fallback string
 		fallback = args[0].(string)
 

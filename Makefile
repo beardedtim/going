@@ -27,7 +27,7 @@ dev-run: start-backing-services-dev
 	go run .
 
 run:
-	docker-compose up
+	docker-compose up --force-recreate --build
 #
 # Creates a migeration file to be used by goose
 #
