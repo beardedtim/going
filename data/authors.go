@@ -9,9 +9,8 @@ type Author struct {
 
 func FindAllAuthors() ([]Author, error) {
 	var authors []Author
-	var err error
 
-	err = db.Model(&authors).Select()
+	err := db.Model(&authors).Select()
 
 	return authors, err
 }
@@ -31,4 +30,14 @@ func CreateNewAuthor(author AuthorCreate) (*Author, error) {
 	_, err = db.Model(data).Insert()
 
 	return data, err
+}
+
+func FindAuthorById(id string) (*Author, error) {
+	author := &Author{
+		Id: id,
+	}
+
+	err := db.Model(author).WherePK().Select()
+
+	return author, err
 }

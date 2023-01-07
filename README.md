@@ -17,3 +17,12 @@ and teach me how to solve those problems in Go.
   - Obvisously the language of choice
 - [docker-compose](https://docs.docker.com/compose/)
   - Used to set up the database and other stateful services
+
+### API
+
+```
+GET / -> Home page in HTML
+GET /authors -> List of known authors
+GET /authors/:author_id -> Get author with that specific ID
+POST /authors -> JSON{ name: string, avatar: string } Add author 
+``

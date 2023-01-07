@@ -63,6 +63,7 @@ func setupHandler(handler *gin.Engine) *gin.Engine {
 	handler.GET("/healthcheck", Healthcheck)
 
 	handler.GET("/authors", FindAllAuthors)
+	handler.GET("/authors/:id", FindAuthorById)
 	handler.POST("/authors", CreateAuthor)
 
 	return handler

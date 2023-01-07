@@ -27,6 +27,24 @@ func FindAllAuthors(c *gin.Context) {
 	})
 }
 
+func FindAuthorById(c *gin.Context) {
+	author, error := database.FindAuthorById(c.Param("id"))
+
+	if error != nil {
+		fmt.Println(error)
+
+		c.JSON(http.StatusNotFound, gin.H{
+			"message": "We could not find Author \"" + c.Param("id") + "\" in the system. Please modify your request before trying again.",
+		})
+
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"data": author,
+	})
+}
+
 func CreateAuthor(c *gin.Context) {
 	var requestBody database.AuthorCreate
 
